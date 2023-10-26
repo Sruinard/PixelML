@@ -19,7 +19,7 @@ kubectl apply -f ./kubeflow_cluster/persistent_volume.yaml
 
 
 # wait for the ui pod to be up and running. Once done, the devcontainer will forward it such that it can be viewed on port 8080
-while [[ $(kubectl get pods -l=app=ml-pipeline-ui --namespace=kubeflow -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do
+while [ $(kubectl get pods -l=app=ml-pipeline-ui --namespace=kubeflow -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]; do
     echo "Waiting for pod"
     sleep 5
 done
