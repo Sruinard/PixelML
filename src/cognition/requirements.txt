@@ -1,1 +1,2 @@
-tfx==1.14
+tfx[kfp]<2.0
+shapely<2
