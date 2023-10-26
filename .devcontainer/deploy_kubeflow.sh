@@ -17,6 +17,8 @@ kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/env/platform
 
 kubectl apply -f ./kubeflow_cluster/persistent_volume.yaml
 
+kubectl patch deployment ml-pipeline-visualizationserver --patch "$(cat ./kubeflow_cluster/patch_visualization.yaml)" -n kubeflow --type strategic
+
 
 # wait for the ui pod to be up and running. Once done, the devcontainer will forward it such that it can be viewed on port 8080
 while [[ $(kubectl get pods -l=app=ml-pipeline-ui --namespace=kubeflow -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do
