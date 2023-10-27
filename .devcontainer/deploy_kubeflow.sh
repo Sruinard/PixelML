@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 # if kind cluster doesn't exists, create it
-if [ -z "$(kind get clusters | grep kind)" ]; then
+if [ -z "$(kind get clusters | grep pixelml)" ]; then
     kind create cluster --name pixelml --config=./kubeflow_cluster/kind_config.yaml
 fi
 

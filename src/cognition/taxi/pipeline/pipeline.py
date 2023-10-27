@@ -15,7 +15,7 @@
 
 This file defines TFX pipeline and various components in the pipeline.
 """
-
+import os
 from typing import Any, Dict, List, Optional
 
 import tensorflow_model_analysis as tfma
@@ -85,7 +85,8 @@ def create_pipeline(
   transform = tfx.components.Transform(
       examples=example_gen.outputs['examples'],
       schema=schema_gen.outputs['schema'],
-      preprocessing_fn=preprocessing_fn)
+      preprocessing_fn=preprocessing_fn,
+      )
   # TODO(step 6): Uncomment here to add Transform to the pipeline.
   components.append(transform)
 

@@ -24,7 +24,7 @@ from kfp import onprem
 # TFX pipeline produces many output files and metadata. All output data will be
 # stored under this OUTPUT_DIR.
 # OUTPUT_DIR = os.path.join('gs://', configs.GCS_BUCKET_NAME)
-OUTPUT_DIR = "/local/artifacts"
+OUTPUT_DIR = "/local/taxi/artifacts"
 
 # TFX produces two types of outputs, files and metadata.
 # - Files will be created under PIPELINE_ROOT directory.
@@ -51,7 +51,7 @@ DATA_PATH = "/local/taxi/data"
 
 PVC_NAME = "tfx-pvc"
 PV_NAME = "tfx-pv"
-PV_MOUNT_BASEPATH = "/local"
+PV_MOUNT_BASEPATH = "/local/taxi"
 
 def run():
   """Define a kubeflow pipeline."""
@@ -121,3 +121,5 @@ def run():
 if __name__ == '__main__':
   logging.set_verbosity(logging.INFO)
   run()
+
+

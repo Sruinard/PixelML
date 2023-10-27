@@ -3,7 +3,7 @@ spec:
     spec:
       containers:
       - name: ml-pipeline-ui
-        image: gcr.io/ml-pipeline/visualization-server:2.0.1
+        # image: gcr.io/ml-pipeline/visualization-server:2.0.1
         volumeMounts:
           - mountPath: /tmp/tfx
             name: output-volume-mount-name            

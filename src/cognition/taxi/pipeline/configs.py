@@ -50,7 +50,8 @@ PIPELINE_NAME = 'kubeflow-taxi'
 # Pipelines used.
 # This image will be automatically built by CLI if we use --build-image flag.
 # PIPELINE_IMAGE = f'gcr.io/{GOOGLE_CLOUD_PROJECT}/{PIPELINE_NAME}'
-PIPELINE_IMAGE = "tensorflow/tfx:1.14.0"
+# PIPELINE_IMAGE = "tensorflow/tfx:1.14.0"
+PIPELINE_IMAGE = "taxitfxkfp:0.1.0"
 
 PREPROCESSING_FN = 'models.preprocessing.preprocessing_fn'
 RUN_FN = 'models.keras_model.model.run_fn'
