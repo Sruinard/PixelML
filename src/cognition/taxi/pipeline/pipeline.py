@@ -40,8 +40,6 @@ def create_pipeline(
     metadata_connection_config: Optional[
         metadata_store_pb2.ConnectionConfig] = None,
     beam_pipeline_args: Optional[List[str]] = None,
-    ai_platform_training_args: Optional[Dict[str, str]] = None,
-    ai_platform_serving_args: Optional[Dict[str, Any]] = None,
 ) -> tfx.dsl.Pipeline:
   """Implements the chicago taxi pipeline with TFX."""
 
@@ -99,14 +97,8 @@ def create_pipeline(
       'train_args': train_args,
       'eval_args': eval_args,
   }
-  if ai_platform_training_args is not None:
-    trainer_args['custom_config'] = {
-        tfx.extensions.google_cloud_ai_platform.TRAINING_ARGS_KEY:
-            ai_platform_training_args,
-    }
-    trainer = tfx.extensions.google_cloud_ai_platform.Trainer(**trainer_args)
-  else:
-    trainer = tfx.components.Trainer(**trainer_args)
+
+  trainer = tfx.components.Trainer(**trainer_args)
   # TODO(step 6): Uncomment here to add Trainer to the pipeline.
   components.append(trainer)
 
@@ -159,18 +151,10 @@ def create_pipeline(
       'model_blessing':
           evaluator.outputs['blessing'],
   }
-  if ai_platform_serving_args is not None:
-    pusher_args['custom_config'] = {
-        tfx.extensions.google_cloud_ai_platform.experimental
-        .PUSHER_SERVING_ARGS_KEY:
-            ai_platform_serving_args
-    }
-    pusher = tfx.extensions.google_cloud_ai_platform.Pusher(**pusher_args)  # pylint: disable=unused-variable
-  else:
-    pusher_args['push_destination'] = tfx.proto.PushDestination(
+  pusher_args['push_destination'] = tfx.proto.PushDestination(
         filesystem=tfx.proto.PushDestination.Filesystem(
             base_directory=serving_model_dir))
-    pusher = tfx.components.Pusher(**pusher_args)  # pylint: disable=unused-variable
+  pusher = tfx.components.Pusher(**pusher_args)  # pylint: disable=unused-variable
   # TODO(step 6): Uncomment here to add Pusher to the pipeline.
   components.append(pusher)
 
