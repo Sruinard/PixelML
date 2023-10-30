@@ -25,3 +25,6 @@ while [[ $(kubectl get pods -l=app=ml-pipeline-ui --namespace=kubeflow -o 'jsonp
     echo "Waiting for pod"
     sleep 5
 done
+
+
+kubectl port-forward -n kubeflow svc/ml-pipeline-ui 8080:80
