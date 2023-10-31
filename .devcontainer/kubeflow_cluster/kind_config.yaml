@@ -3,7 +3,7 @@ apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
 - role: control-plane
   extraMounts:
-  - hostPath: /workspaces/PixelML/src/cognition/taxi
+  - hostPath: /Users/stefruinard/Documents/personal/projects/202310_saas_startup/PixelML/src/cognition/taxi
     containerPath: /local/taxi
     readOnly: false
     selinuxRelabel: false

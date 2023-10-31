@@ -1,0 +1,11 @@
+name: pixelml
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - tensorflow
+  - pip
+  - pip:
+    - tfx[kfp]<2.0
+    - ipython
+    - ipykernel
