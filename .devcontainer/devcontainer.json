@@ -12,7 +12,7 @@
 		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
 		"ghcr.io/devcontainers-contrib/features/kind:1": {},
 		"ghcr.io/devcontainers/features/python:1": {},
-		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+		// "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
 		"ghcr.io/devcontainers/features/conda:1": {}
 	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -42,10 +42,10 @@
 	"runArgs": [
 		"--platform=linux/amd64",
 		"--privileged",
-		"--add-host=host.docker.internal:host-gateway",
-		"--network=host"
+		// "--add-host=host.docker.internal:host-gateway",
+		// "--network=host"
 	],
-	"mounts": [
-		"source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"
-	]
+	// "mounts": [
+	// 	"source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"
+	// ]
 }
