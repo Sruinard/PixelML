@@ -12,7 +12,7 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/local/taxi"
+    path: "/local/projects/pixelml"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

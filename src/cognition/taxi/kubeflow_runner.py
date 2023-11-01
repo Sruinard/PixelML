@@ -24,7 +24,7 @@ from kfp import onprem
 # TFX pipeline produces many output files and metadata. All output data will be
 # stored under this OUTPUT_DIR.
 # OUTPUT_DIR = os.path.join('gs://', configs.GCS_BUCKET_NAME)
-OUTPUT_DIR = "/local/taxi/artifacts"
+OUTPUT_DIR = "/local/projects/pixelml/artifacts"
 
 # TFX produces two types of outputs, files and metadata.
 # - Files will be created under PIPELINE_ROOT directory.
@@ -34,11 +34,11 @@ PIPELINE_ROOT = os.path.join(OUTPUT_DIR, 'tfx_pipeline_output',
 # The last component of the pipeline, "Pusher" will produce serving model under
 # SERVING_MODEL_DIR.
 SERVING_MODEL_DIR = os.path.join(PIPELINE_ROOT, 'serving_model')
-DATA_PATH = "/local/taxi/data"
+DATA_PATH = "/local/projects/pixelml/data"
 
 PVC_NAME = "tfx-pvc"
 PV_NAME = "tfx-pv"
-PV_MOUNT_BASEPATH = "/local/taxi"
+PV_MOUNT_BASEPATH = "/local/projects/pixelml"
 
 def run():
   """Define a kubeflow pipeline."""

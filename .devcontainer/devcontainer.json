@@ -8,21 +8,21 @@
 		"dockerfile": "Dockerfile"
 	},
 	"features": {
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+		// "ghcr.io/devcontainers/features/docker-in-docker:2": {},
 		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
 		"ghcr.io/devcontainers-contrib/features/kind:1": {},
 		"ghcr.io/devcontainers/features/python:1": {},
-		// "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
-		"ghcr.io/devcontainers/features/conda:1": {}
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+		"ghcr.io/devcontainers/features/conda:1": {},
 	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
 		8080
 	],
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": {
-	// 	"launch-kubeflow": "/bin/bash ./.devcontainer/deploy_kubeflow.sh"
-	// },
+	"postCreateCommand": {
+		"add-conda-solver": "conda install -n base conda-libmamba-solver"
+	},
 	// Use 'postStartCommand' to run commands after the container is created like starting minikube.
 	// "postStartCommand": "kubectl port-forward -n kubeflow svc/ml-pipeline-ui 8080:80"
 	"postStartCommand": "/bin/bash ./.devcontainer/deploy_kubeflow.sh",
@@ -42,10 +42,10 @@
 	"runArgs": [
 		"--platform=linux/amd64",
 		"--privileged",
-		// "--add-host=host.docker.internal:host-gateway",
-		// "--network=host"
+		"--add-host=host.docker.internal:host-gateway",
+		"--network=host"
 	],
-	// "mounts": [
-	// 	"source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"
-	// ]
+	"mounts": [
+		"source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"
+	]
 }

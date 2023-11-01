@@ -9,3 +9,4 @@ dependencies:
     - tfx[kfp]<2.0
     - ipython
     - ipykernel
+    - shapely<2

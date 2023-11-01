@@ -153,6 +153,4 @@ def create_pipeline(
       # enable_cache=True,
       metadata_connection_config=metadata_connection_config,
       beam_pipeline_args=beam_pipeline_args,
-      metadata_connection_config = tfx.orchestration.metadata.sqlite_metadata_connection_config(
-    os.path.join(pipeline_root, 'metadata.sqlite'))
   )

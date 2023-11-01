@@ -21,7 +21,7 @@ tfx pipeline update  \
 --endpoint=http://localhost:8080/
 
 
-# version is important! Some issue with latest as mentioned here: [https://iximiuz.com/en/posts/kubernetes-kind-load-docker-image/]
+# versiontag is important! Some issue with latest as mentioned here: [https://iximiuz.com/en/posts/kubernetes-kind-load-docker-image/]
 # the image needs to be available within the cluster.
 # otherwise you'll get a Image not found error
 docker build -t taxitfxkfp:0.1.0 . 
